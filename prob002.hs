@@ -1,5 +1,8 @@
-fib 0 = 1
-fib 1 = 1
-fib x = fib (x - 1) + fib (x - 2)
+module Main
+  where
 
-result = sum $ filter even $ takeWhile (< 4000000) $ map fib [1..]
+fibs = 1 : 1 : zipWith (+) fibs (tail fibs)
+
+result = sum $ filter even $ takeWhile (< 4000000) fibs
+
+main = putStrLn $ show result
